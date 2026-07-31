@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="200" height="220">
+  <rect width="200" height="220" fill="#fce4ec"/>
+  <circle cx="100" cy="72" r="42" fill="#880e4f"/>
+  <circle cx="100" cy="62" r="28" fill="#ffccbc"/>
+  <path d="M72 52 Q100 38 128 52 Q130 70 100 75 Q70 70 72 52Z" fill="#4a148c"/>
+  <ellipse cx="100" cy="60" rx="16" ry="17" fill="#ffccbc"/>
+  <ellipse cx="93" cy="57" rx="3" ry="4" fill="#4a148c"/>
+  <ellipse cx="107" cy="57" rx="3" ry="4" fill="#4a148c"/>
+  <path d="M92 67 Q100 74 108 67" stroke="#c2185b" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="60" y="115" width="80" height="90" rx="12" fill="#880e4f"/>
+  <rect x="76" y="107" width="48" height="20" rx="6" fill="#ffccbc"/>
+  <circle cx="100" cy="105" r="5" fill="#f8bbd0"/>
+  <rect x="84" y="130" width="14" height="40" rx="4" fill="#fff" opacity="0.3"/>
+  <rect x="102" y="130" width="14" height="40" rx="4" fill="#fff" opacity="0.3"/>
+  <text x="100" y="210" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#880e4f">Ms. Muna</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" width="200" height="220">
+  <rect width="200" height="220" fill="#e8f0fe"/>
+  <circle cx="100" cy="72" r="42" fill="#1a3c6e"/>
+  <circle cx="100" cy="62" r="28" fill="#fde68a"/>
+  <ellipse cx="100" cy="58" rx="16" ry="18" fill="#f9a825"/>
+  <ellipse cx="93" cy="55" rx="3" ry="4" fill="#1a3c6e"/>
+  <ellipse cx="107" cy="55" rx="3" ry="4" fill="#1a3c6e"/>
+  <path d="M92 65 Q100 72 108 65" stroke="#1a3c6e" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <rect x="60" y="115" width="80" height="90" rx="12" fill="#1a3c6e"/>
+  <rect x="76" y="107" width="48" height="20" rx="6" fill="#fde68a"/>
+  <rect x="84" y="130" width="14" height="40" rx="4" fill="#fff" opacity="0.3"/>
+  <rect x="102" y="130" width="14" height="40" rx="4" fill="#fff" opacity="0.3"/>
+  <text x="100" y="210" text-anchor="middle" font-family="Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#1a3c6e">Mr. Mohammed</text>
+</svg>

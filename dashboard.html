@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard — Mac Applic</title>
+  <link rel="stylesheet" href="../mac.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body dash-body">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="../images/logo.svg" alt="Logo" width="44" height="44">
+      <span>Mac Applic</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#overview" class="nav-item active" data-panel="overview">
+        <span class="nav-icon">📊</span><span>Overview</span>
+      </a>
+      <a href="#messages" class="nav-item" data-panel="messages">
+        <span class="nav-icon">📬</span><span>Messages</span>
+        <span class="badge" id="msgBadge">0</span>
+      </a>
+      <a href="#chat" class="nav-item" data-panel="chat">
+        <span class="nav-icon">💬</span><span>Live Chat</span>
+        <span class="badge online-badge">●</span>
+      </a>
+      <a href="#teachers" class="nav-item" data-panel="teachers">
+        <span class="nav-icon">👩‍🏫</span><span>Teachers</span>
+      </a>
+      <a href="#students" class="nav-item" data-panel="students">
+        <span class="nav-icon">🎓</span><span>Students</span>
+      </a>
+      <a href="#settings" class="nav-item" data-panel="settings">
+        <span class="nav-icon">⚙️</span><span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="admin-user">
+        <div class="admin-avatar">AD</div>
+        <div class="admin-info">
+          <strong>Admin</strong>
+          <small>admin@macapplic.edu.so</small>
+        </div>
+      </div>
+      <a href="#" id="logoutBtn" class="logout-btn" title="Logout">⏻</a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="dash-main" id="dashMain">
+
+    <!-- Top Bar -->
+    <header class="dash-header">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
+      <div class="dash-title" id="dashTitle">Overview</div>
+      <div class="dash-header-right">
+        <div class="search-box">
+          <input type="search" placeholder="Search…" aria-label="Search dashboard">
+          <span>🔍</span>
+        </div>
+        <button class="theme-toggle dash-theme-toggle" aria-label="Toggle theme">🌙</button>
+        <div class="notif-bell" id="notifBell" aria-label="Notifications">
+          🔔 <span class="notif-count" id="notifCount">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== OVERVIEW PANEL ===== -->
+    <section class="panel active" id="panel-overview">
+      <div class="panel-header">
+        <h2>Dashboard Overview</h2>
+        <p>Welcome back, Admin! Here's what's happening today.</p>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#e0f2fe">📬</div>
+          <div class="kpi-body">
+            <span class="kpi-num" id="kpi-messages">0</span>
+            <span class="kpi-lbl">New Messages</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#dcfce7">🎓</div>
+          <div class="kpi-body">
+            <span class="kpi-num">1,200</span>
+            <span class="kpi-lbl">Total Students</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#fef3c7">👩‍🏫</div>
+          <div class="kpi-body">
+            <span class="kpi-num">60</span>
+            <span class="kpi-lbl">Teachers</span>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#fce7f3">💬</div>
+          <div class="kpi-body">
+            <span class="kpi-num" id="kpi-chats">0</span>
+            <span class="kpi-lbl">Active Chats</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-row">
+        <!-- Recent Messages -->
+        <div class="dash-widget">
+          <div class="widget-header">
+            <h3>Recent Messages</h3>
+            <a href="#messages" class="widget-link dash-nav-link" data-panel="messages">View All →</a>
+          </div>
+          <div id="recentMessages">
+            <div class="loading">Loading messages…</div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="dash-widget">
+          <div class="widget-header"><h3>Quick Info</h3></div>
+          <ul class="quick-list">
+            <li>📅 Today: <strong id="todayDate"></strong></li>
+            <li>🕐 School Hours: <strong>7:30 AM – 4:00 PM</strong></li>
+            <li>📞 Main Line: <strong>+252 61 234 5678</strong></li>
+            <li>✉️ Email: <strong>info@macapplic.edu.so</strong></li>
+            <li>🌐 Website: <strong>macapplic.edu.so</strong></li>
+            <li>📍 Location: <strong>Mogadishu, Somalia</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MESSAGES PANEL ===== -->
+    <section class="panel" id="panel-messages">
+      <div class="panel-header">
+        <h2>Contact Messages</h2>
+        <p>All messages submitted via the school website contact form.</p>
+      </div>
+
+      <div class="messages-toolbar">
+        <input type="search" class="msg-search" id="msgSearch" placeholder="Search messages…">
+        <button class="btn-refresh" id="refreshMsgs">🔄 Refresh</button>
+      </div>
+
+      <div class="messages-list" id="messagesList">
+        <div class="loading">Loading messages…</div>
+      </div>
+    </section>
+
+    <!-- ===== CHAT PANEL ===== -->
+    <section class="panel" id="panel-chat">
+      <div class="panel-header">
+        <h2>Live Chat</h2>
+        <p>Chat in real-time with parents, students, and staff.</p>
+      </div>
+
+      <div class="chat-layout">
+        <!-- Contacts sidebar -->
+        <div class="chat-contacts">
+          <div class="chat-contacts-header">
+            <input type="search" placeholder="Search contacts…" class="chat-search" id="contactSearch">
+          </div>
+          <div class="contact-list" id="contactList">
+            <div class="contact-item active" data-user="general">
+              <div class="contact-avatar" style="background:#1a3c6e">GC</div>
+              <div class="contact-info">
+                <strong>General Channel</strong>
+                <small>School-wide announcements</small>
+              </div>
+              <span class="online-dot"></span>
+            </div>
+            <div class="contact-item" data-user="parents">
+              <div class="contact-avatar" style="background:#059669">PA</div>
+              <div class="contact-info">
+                <strong>Parents Group</strong>
+                <small>Parent community</small>
+              </div>
+            </div>
+            <div class="contact-item" data-user="staff">
+              <div class="contact-avatar" style="background:#7c3aed">ST</div>
+              <div class="contact-info">
+                <strong>Staff Room</strong>
+                <small>Teacher communications</small>
+              </div>
+            </div>
+            <div class="contact-item" data-user="visitor">
+              <div class="contact-avatar" style="background:#dc2626">VS</div>
+              <div class="contact-info">
+                <strong>Website Visitors</strong>
+                <small>Enquiries from site</small>
+              </div>
+              <span class="unread-badge">3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat window -->
+        <div class="chat-window">
+          <div class="chat-window-header">
+            <div class="chat-window-user">
+              <div class="contact-avatar sm" style="background:#1a3c6e">GC</div>
+              <div>
+                <strong id="chatWindowTitle">General Channel</strong>
+                <small id="chatWindowSub">School-wide announcements</small>
+              </div>
+            </div>
+            <div class="chat-window-actions">
+              <button class="icon-btn" title="Clear chat" id="clearChatBtn">🗑️</button>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages" aria-live="polite" aria-label="Chat messages">
+            <div class="chat-date-divider">Today</div>
+            <div class="chat-msg received">
+              <div class="msg-avatar">🤖</div>
+              <div class="msg-bubble">
+                <p>Welcome to Mac Applic Admin Chat! You can communicate with parents, staff, and website visitors here.</p>
+                <time>Just now</time>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-bar">
+            <button class="emoji-btn" id="emojiBtn" title="Emoji" aria-label="Add emoji">😊</button>
+            <div class="emoji-picker" id="emojiPicker">
+              <button>😊</button><button>👍</button><button>🎓</button><button>📚</button>
+              <button>✅</button><button>❌</button><button>📅</button><button>📢</button>
+              <button>🌟</button><button>💡</button><button>🤝</button><button>🎉</button>
+            </div>
+            <textarea
+              id="chatInput"
+              class="chat-input"
+              placeholder="Type a message…"
+              rows="1"
+              aria-label="Chat message input"
+            ></textarea>
+            <button class="send-btn" id="sendBtn" aria-label="Send message">➤</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TEACHERS PANEL ===== -->
+    <section class="panel" id="panel-teachers">
+      <div class="panel-header">
+        <h2>Teacher Management</h2>
+        <p>View and manage all teaching staff.</p>
+      </div>
+
+      <div class="teachers-toolbar">
+        <input type="search" placeholder="Search teachers…" class="msg-search">
+        <button class="btn-primary-sm" id="addTeacherBtn">+ Add Teacher</button>
+      </div>
+
+      <div class="admin-teacher-grid">
+        <div class="admin-teacher-card">
+          <img src="../images/teacher1.svg" alt="Mr. Mohammed">
+          <div class="atc-body">
+            <h4>Mr. Mohammed</h4>
+            <p>Mathematics &amp; Science</p>
+            <p class="atc-email">mohammed@macapplic.edu.so</p>
+            <div class="atc-actions">
+              <button class="btn-edit">✏️ Edit</button>
+              <button class="btn-del">🗑️ Remove</button>
+            </div>
+          </div>
+        </div>
+        <div class="admin-teacher-card">
+          <img src="../images/teacher2.svg" alt="Ms. Muna">
+          <div class="atc-body">
+            <h4>Ms. Muna</h4>
+            <p>English &amp; Literature</p>
+            <p class="atc-email">muna@macapplic.edu.so</p>
+            <div class="atc-actions">
+              <button class="btn-edit">✏️ Edit</button>
+              <button class="btn-del">🗑️ Remove</button>
+            </div>
+          </div>
+        </div>
+        <div class="admin-teacher-card">
+          <img src="../images/teacher3.svg" alt="Mr. Ibrahim">
+          <div class="atc-body">
+            <h4>Mr. Ibrahim</h4>
+            <p>ICT &amp; Technology</p>
+            <p class="atc-email">ibrahim@macapplic.edu.so</p>
+            <div class="atc-actions">
+              <button class="btn-edit">✏️ Edit</button>
+              <button class="btn-del">🗑️ Remove</button>
+            </div>
+          </div>
+        </div>
+        <div class="admin-teacher-card">
+          <img src="../images/teacher1.svg" alt="Ms. Hodan">
+          <div class="atc-body">
+            <h4>Ms. Hodan</h4>
+            <p>Arabic &amp; Islamic Studies</p>
+            <p class="atc-email">hodan@macapplic.edu.so</p>
+            <div class="atc-actions">
+              <button class="btn-edit">✏️ Edit</button>
+              <button class="btn-del">🗑️ Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STUDENTS PANEL ===== -->
+    <section class="panel" id="panel-students">
+      <div class="panel-header">
+        <h2>Student Overview</h2>
+        <p>Enrollment summary by grade and program.</p>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#e0f2fe">📖</div>
+          <div class="kpi-body"><span class="kpi-num">420</span><span class="kpi-lbl">Primary Students</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#dcfce7">🎓</div>
+          <div class="kpi-body"><span class="kpi-num">580</span><span class="kpi-lbl">Secondary Students</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#fef3c7">👦</div>
+          <div class="kpi-body"><span class="kpi-num">610</span><span class="kpi-lbl">Male Students</span></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon" style="background:#fce7f3">👧</div>
+          <div class="kpi-body"><span class="kpi-num">590</span><span class="kpi-lbl">Female Students</span></div>
+        </div>
+      </div>
+
+      <div class="dash-widget" style="margin-top:1.5rem">
+        <div class="widget-header"><h3>Enrollment by Grade</h3></div>
+        <div class="enrollment-table-wrap">
+          <table class="enrollment-table">
+            <thead>
+              <tr><th>Grade</th><th>Students</th><th>Male</th><th>Female</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Grade 1</td><td>85</td><td>44</td><td>41</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 2</td><td>78</td><td>40</td><td>38</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 3</td><td>90</td><td>47</td><td>43</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 4</td><td>82</td><td>42</td><td>40</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 5</td><td>85</td><td>44</td><td>41</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 9</td><td>110</td><td>58</td><td>52</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 10</td><td>95</td><td>50</td><td>45</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 11</td><td>88</td><td>46</td><td>42</td><td><span class="status-badge green">Active</span></td></tr>
+              <tr><td>Grade 12</td><td>107</td><td>55</td><td>52</td><td><span class="status-badge yellow">Graduating</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SETTINGS PANEL ===== -->
+    <section class="panel" id="panel-settings">
+      <div class="panel-header">
+        <h2>Settings</h2>
+        <p>Manage your admin account and portal preferences.</p>
+      </div>
+
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3>🔐 Change Password</h3>
+          <form class="settings-form" id="changePasswordForm">
+            <label>Current Password</label>
+            <input type="password" placeholder="••••••••">
+            <label>New Password</label>
+            <input type="password" placeholder="••••••••">
+            <label>Confirm New Password</label>
+            <input type="password" placeholder="••••••••">
+            <button type="submit" class="btn-primary-sm">Update Password</button>
+          </form>
+        </div>
+        <div class="settings-card">
+          <h3>🔔 Notifications</h3>
+          <div class="toggle-row">
+            <label>Email alerts for new messages</label>
+            <input type="checkbox" class="toggle-input" checked>
+          </div>
+          <div class="toggle-row">
+            <label>Chat sound notifications</label>
+            <input type="checkbox" class="toggle-input" checked>
+          </div>
+          <div class="toggle-row">
+            <label>Daily summary email</label>
+            <input type="checkbox" class="toggle-input">
+          </div>
+        </div>
+        <div class="settings-card">
+          <h3>🌐 Portal Info</h3>
+          <ul class="quick-list">
+            <li>Version: <strong>2.0.0</strong></li>
+            <li>Server: <strong>Node.js / Express</strong></li>
+            <li>Admin: <strong>admin@macapplic.edu.so</strong></li>
+          </ul>
+          <a href="/" class="btn-primary-sm" style="margin-top:1rem;display:inline-block">← Visit Website</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end dash-main -->
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
