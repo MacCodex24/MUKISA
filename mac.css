@@ -29,7 +29,52 @@ a  { text-decoration: none; color: inherit; }
 ::-webkit-scrollbar { width: 7px; }
 ::-webkit-scrollbar-track { background: var(--light); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+/* Quick Links Container */
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
 
+/* Social Icons */
+.quick-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #222;
+    color: #fff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.quick-links a:hover {
+    transform: translateY(-5px);
+    background: #007bff;
+    color: #fff;
+}
+
+/* Individual Colors on Hover */
+.quick-links a:nth-child(1):hover {
+    background: #FF0000; /* YouTube */
+}
+
+.quick-links a:nth-child(2):hover {
+    background: #E1306C; /* Instagram */
+}
+
+.quick-links a:nth-child(3):hover {
+    background: #000000; /* X */
+}
+
+.quick-links a:nth-child(4):hover {
+    background: #1877F2; /* Facebook */
+}
 /* ===== HEADER ===== */
 header {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
